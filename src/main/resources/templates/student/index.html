@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		
+	</head>
+	<body>
+		<div th:replace="~{fragments :: navbar}"></div>
+		<h1>Lista studenti</h1>
+		<div>
+			<ul>
+				<li th:each="student : ${students}">
+					<a th:href="@{|/students/${student.id}|}" th:text="|${student.firstName} ${student.lastName}|"></a>
+					<span th:text="${student.dateOfBirth}"></span> 
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

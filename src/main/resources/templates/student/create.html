@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+	</head>
+	<body>
+		<div th:replace="~{fragments :: navbar}"></div>
+		
+		<h1>Creazione studente</h1>
+		<form method="POST" action="/students/create" th:object="${student}">
+			<div>
+				First name:
+				<input type="text" th:field="*{firstName}"> <!--/* name="firstName" value="..." */-->
+			</div>
+			<div>
+				Last name:
+				<input type="text" th:field="*{lastName}">
+			</div>
+			<div>
+				Nationality:
+				<input type="text" th:field="*{nationality}">
+			</div>
+			<div>
+				Date of birth:
+				<input type="date" th:field="*{dateOfBirth}">
+			</div>
+			<div>
+				City of birth:
+				<input type="text" th:field="*{cityOfBirth}">
+			</div>
+			<div>
+				Num exams:
+				<input type="text" th:field="*{numExams}">
+			</div>
+			<div>
+				Average score:
+				<input type="text" th:field="*{averageScore}">
+			</div>
+			<button>Crea</button>
+		</form>
+		
+		<hr/>
+		
+		<div>
+			<form action="/students/createRandom" method="POST">
+				Numero studenti:
+				<input type="number" name="userInput">
+				<button>Crea random</button>
+			</form>
+		</div>
+	</body>
+</html>

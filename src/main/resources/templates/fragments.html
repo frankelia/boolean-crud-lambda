@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+	</head>
+	<body>
+		<div th:fragment="navbar">
+			<ul>
+				<li><a href="/students">Lista studenti</a></li>
+				<li><a href="/students/create">Crea studente</a></li>
+			</ul>
+		</div>
+		<div th:fragment="table(title, columnTitle, dataObject)"> 
+			<h2 th:text="${title}"></h2>
+			<table>
+				<thead>
+					<tr>
+						<th th:text="${columnTitle}"></th>
+						<th>Media</th>
+					</tr> 
+				</thead>
+				<tbody>
+					<tr th:each="n : ${dataObject.keySet()}">
+						<td th:text="${n}"></td>
+						<td th:text="${dataObject.get(n)}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>

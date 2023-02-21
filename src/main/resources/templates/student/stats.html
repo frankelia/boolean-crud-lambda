@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+	</head>
+	<body>
+		<div th:replace="~{fragments :: navbar}"></div>
+		<h2>Media voti totale</h2>
+		<div th:text="${stats.average}"></div>
+
+		<div th:replace="~{fragments :: table('Media voti per città', 'Città', ${stats.averageByCity})}">
+		</div>		
+		<div th:replace="~{fragments :: table('Media voti per nazionalità', 'Nazionalità', ${stats.averageByNationality})}">
+		</div>
+		
+		<div th:replace="~{fragments :: table('Migliore studente per città', 'Città', ${stats.bestByCity})}">
+		</div>
+		
+		<h2>Migliore studente per città</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Città</th>
+					<th>Nome</th>
+				</tr> 
+			</thead>
+			<tbody>
+				<tr th:each="c : ${stats.bestByCity.keySet()}">
+					<td th:text="${c}"></td>
+					<td th:text="${stats.bestByCity.get(c).getFullName()}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
+ 
